@@ -1,0 +1,11 @@
+<!-- tasks/templates/tasks/login.html -->
+
+<h1>Zaloguj się</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Zaloguj">
+</form>
+
+<p>Nie masz konta? <a href="{% url 'register' %}">Zarejestruj się</a></p>

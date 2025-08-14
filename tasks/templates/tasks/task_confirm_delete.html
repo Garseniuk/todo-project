@@ -1,0 +1,9 @@
+
+<a href="{% url 'tasks' %}">Anuluj</a>
+
+<p>Czy na pewno chcesz usunąć to zadanie? "{{ task }}"</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Tak, usuń">
+</form>

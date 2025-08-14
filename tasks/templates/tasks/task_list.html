@@ -1,0 +1,43 @@
+<!-- tasks/templates/tasks/task_list.html -->
+
+<h1>Witaj, {{ request.user }}!</h1>
+
+<p>Masz {{ count }} nieukończonych zadań.</p>
+
+<hr>
+
+<h2>Twoje zadania:</h2>
+
+<a href="{% url 'task-create' %}">Dodaj nowe zadanie</a>
+
+<table>
+    <thead>
+        <tr>
+            <th>Zadanie</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td><a href="{% url 'task-update' task.id %}">Edytuj</a></td>
+            <td><a href="{% url 'task-delete' task.id %}">Usuń</a></td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">Nie masz żadnych zadań na liście.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<hr>
+<!-- Nowy, poprawny sposób na wylogowanie w Django 5 -->
+<form method="POST" action="{% url 'logout' %}" style="display: inline;">
+    {% csrf_token %}
+    <button type="submit" style="background: none; border: none; color: blue; text-decoration: underline; cursor: pointer; padding: 0;">
+        Wyloguj
+    </button>
+</form>
