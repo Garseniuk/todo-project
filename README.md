@@ -4,14 +4,9 @@ Prosta, ale w pełni funkcjonalna aplikacja webowa typu "Lista Zadań" zbudowana
 
 ## Zrzut Ekranu
 
-![Widok strony logowania](screenshots/todo_list1.png)
-*Strona logowania i rejestracji.*
-
-![Widok głównej listy zadań](screenshots/todo_list2.png)
-*Główny widok aplikacji z listą zadań użytkownika.*
-
-![Widok formularza dodawania zadania](screenshots/todo_list3.png)
-*Formularz dodawania i edycji zadania.*
+| Strona Logowania | Lista Zadań | Formularz Edycji |
+| :---: | :---: | :---: |
+| ![Widok strony logowania](screenshots/todo_list1.png) | ![Widok listy zadań](screenshots/todo_list2.png) | ![Widok formularza edycji](screenshots/todo_list3.png) |
 
 ## Główne Funkcjonalności
 
