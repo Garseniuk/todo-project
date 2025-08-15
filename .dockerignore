@@ -1,0 +1,20 @@
+# Ignore the virtual environment
+venv/
+bquote/
+env/
+.venv/
+
+# Ignore temporary files Pythona
+__pycache__/
+*.pyc
+
+# Ignore system files
+.DS_Store
+
+# Ignore Gita
+.git/
+.gitignore
+
+# Ignore konfiguration IDE
+.vscode/
+.idea/
