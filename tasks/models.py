@@ -7,7 +7,7 @@ class Task(models.Model):
     # To jest najważniejsza część: łączymy zadanie z użytkownikiem.
     # ForeignKey to relacja "jeden do wielu" (jeden użytkownik może mieć wiele zadań).
     # on_delete=models.CASCADE oznacza, że jeśli użytkownik zostanie usunięty, jego zadania również.
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True, blank=True)
     
     # Proste pole tekstowe na tytuł zadania, maksymalnie 200 znaków.
     title = models.CharField(max_length=200)

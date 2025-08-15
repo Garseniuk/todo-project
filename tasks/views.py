@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.views.generic.list import ListView
 from django.views.generic.edit import FormView, CreateView, UpdateView, DeleteView # Potrzebne do widoku rejestracji
 from django.urls import reverse_lazy
-
+from .forms import TaskForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.forms import UserCreationForm # Wbudowany formularz Django do tworzenia użytkowników
@@ -50,7 +50,7 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     # Określamy, które pola z modelu mają być widoczne w formularzu.
     # Nie chcemy, aby użytkownik mógł ręcznie przypisać zadanie do kogoś innego.
-    fields = ['title', 'description', 'completed']
+    form_class = TaskForm
     # Po pomyślnym utworzeniu zadania, przekieruj użytkownika z powrotem na listę zadań.
     success_url = reverse_lazy('tasks')
 
@@ -63,10 +63,20 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     # Używamy tych samych pól, co przy tworzeniu.
-    fields = ['title', 'description', 'completed']
+    form_class = TaskForm
     success_url = reverse_lazy('tasks')
+
+    def get_queryset(self):
+        # Użytkownik może edytować tylko swoje własne zadania
+        owner = self.request.user
+        return self.model.objects.filter(user=owner)
 
 class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task' # Zmieniamy nazwę obiektu w szablonie
     success_url = reverse_lazy('tasks')
+
+    def get_queryset(self):
+        # Użytkownik może usuwać tylko swoje własne zadania
+        owner = self.request.user
+        return self.model.objects.filter(user=owner)

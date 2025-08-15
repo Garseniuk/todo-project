@@ -1,11 +1,65 @@
-<!-- tasks/templates/tasks/register.html -->
+{% extends 'tasks/base.html' %}
 
-<h1>Zarejestruj się</h1>
+{% block content %}
+<h1 class="card-title text-center mb-4">Zarejestruj się</h1>
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Zarejestruj">
+    
+    <!-- Używamy pętli, aby dodać klasy do każdego pola -->
+    {% for field in form %}
+      <div class="mb-3">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.help_text %}
+          <small class="form-text text-muted">{{ field.help_text }}</small>
+        {% endif %}
+        {% for error in field.errors %}
+          <div class="alert alert-danger p-1 mt-1">{{ error }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-success w-100">Zarejestruj</button>
 </form>
 
-<p>Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></p>
+<p class="mt-3 text-center">Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></p>
+{% endblock content %}```
+
+**Plik: `tasks/templates/tasks/task_list.html`**
+```html
+{% extends 'tasks/base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="m-0">Twoje zadania</h1>
+    <a href="{% url 'task-create' %}" class="btn btn-primary">Dodaj nowe zadanie</a>
+</div>
+
+<p class="lead">
+    Masz {{ count }} nieukończonych zadań.
+</p>
+
+<hr>
+
+<div class="list-group">
+    {% for task in tasks %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+                <!-- Możemy dodać logikę do przekreślania ukończonych zadań -->
+                {% if task.complete %}
+                    <s class="text-muted">{{ task.title }}</s>
+                {% else %}
+                    {{ task.title }}
+                {% endif %}
+            </div>
+            <div>
+                <a href="{% url 'task-update' task.id %}" class="btn btn-sm btn-outline-secondary me-2">Edytuj</a>
+                <a href="{% url 'task-delete' task.id %}" class="btn btn-sm btn-outline-danger">Usuń</a>
+            </div>
+        </div>
+    {% empty %}
+        <div class="list-group-item">Nie masz żadnych zadań na liście.</div>
+    {% endfor %}
+</div>
+{% endblock content %}

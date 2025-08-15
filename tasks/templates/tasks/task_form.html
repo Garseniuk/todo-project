@@ -1,9 +1,33 @@
-<!-- tasks/templates/tasks/task_form.html -->
+{% extends 'tasks/base.html' %}
 
-<a href="{% url 'tasks' %}">Wróć do listy</a>
+{% block content %}
+<h1 class="card-title mb-4">
+    {% if form.instance.pk %}
+        Edytuj zadanie
+    {% else %}
+        Stwórz nowe zadanie
+    {% endif %}
+</h1>
 
 <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Zapisz">
+    
+    <div class="mb-3">
+      <label for="id_title" class="form-label">Tytuł</label>
+      {{ form.title }}
+    </div>
+    
+    <div class="mb-3">
+      <label for="id_description" class="form-label">Opis</label>
+      {{ form.description }}
+    </div>
+
+    <div class="mb-3 form-check">
+      {{ form.completed }}
+      <label for="id_completed" class="form-check-label">Ukończone</label>
+    </div>
+
+    <button type="submit" class="btn btn-success">Zapisz</button>
+    <a href="{% url 'tasks' %}" class="btn btn-secondary">Anuluj</a>
 </form>
+{% endblock content %}

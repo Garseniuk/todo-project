@@ -1,0 +1,23 @@
+# Pliki bazy danych
+*.sqlite3
+db.sqlite3
+
+# Środowisko wirtualne
+venv/
+bquote/
+env/
+.venv/
+
+# Pliki tymczasowe Pythona
+__pycache__/
+*.pyc
+
+# Pliki systemowe
+.DS_Store
+
+# Pliki logów
+*.log
+
+# Pliki IDE (np. VS Code, PyCharm)
+.vscode/
+.idea/

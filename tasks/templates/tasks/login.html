@@ -1,11 +1,28 @@
-<!-- tasks/templates/tasks/login.html -->
+{% extends 'tasks/base.html' %}
 
-<h1>Zaloguj się</h1>
+{% block content %}
+<h1 class="card-title text-center mb-4">Zaloguj się</h1>
 
-<form method="POST">
+<form method="POST" action="{% url 'login' %}">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Zaloguj">
+    
+    <div class="mb-3">
+        <label for="id_username" class="form-label">Nazwa użytkownika</label>
+        {{ form.username }}
+    </div>
+    <div class="mb-3">
+        <label for="id_password" class="form-label">Hasło</label>
+        {{ form.password }}
+    </div>
+
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            Nazwa użytkownika lub hasło są nieprawidłowe. Spróbuj ponownie.
+        </div>
+    {% endif %}
+    
+    <button type="submit" class="btn btn-primary w-100">Zaloguj</button>
 </form>
 
-<p>Nie masz konta? <a href="{% url 'register' %}">Zarejestruj się</a></p>
+<p class="mt-3 text-center">Nie masz konta? <a href="{% url 'register' %}">Zarejestruj się</a></p>
+{% endblock content %}
