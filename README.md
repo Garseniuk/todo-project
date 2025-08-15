@@ -4,8 +4,14 @@ Prosta, ale w pełni funkcjonalna aplikacja webowa typu "Lista Zadań" zbudowana
 
 ## Zrzut Ekranu
 
-![Widok listy zadań]([screenshots/todo_list1.png, screenshots/todo_list2..png, screenshots3.png])
-*Przykład: Aby dodać zrzut ekranu, zrób go, wrzuć do folderu w projekcie (np. `screenshots/main_view.png`) i podlinkuj tutaj.*
+![Widok strony logowania](screenshots/todo_list1.png)
+*Strona logowania i rejestracji.*
+
+![Widok głównej listy zadań](screenshots/todo_list2.png)
+*Główny widok aplikacji z listą zadań użytkownika.*
+
+![Widok formularza dodawania zadania](screenshots/todo_list3.png)
+*Formularz dodawania i edycji zadania.*
 
 ## Główne Funkcjonalności
 
