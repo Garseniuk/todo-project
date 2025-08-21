@@ -2,48 +2,52 @@
 
 [![Django CI](https://github.com/Garseniuk/todo-project/actions/workflows/django-ci.yml/badge.svg)](https://github.com/Garseniuk/todo-project/actions/workflows/django-ci.yml)
 
-Prosta, ale w pełni funkcjonalna aplikacja webowa typu "Lista Zadań" zbudowana w Pythonie przy użyciu frameworka Django. Projekt implementuje wszystkie podstawowe operacje CRUD, posiada system uwierzytelniania użytkowników, jest w pełni skonteneryzowany za pomocą Dockera i automatycznie testowany przy użyciu GitHub Actions.
+A simple yet full-featured ToDo list web application built with Python and Django. This project demonstrates a complete software development lifecycle, including user authentication, CRUD operations, automated testing, containerization with Docker, and a CI/CD pipeline with GitHub Actions.
 
-## Zrzuty Ekranu
+## Screenshots
 
-| Strona Logowania | Lista Zadań | Formularz Edycji |
+| Login Page | Task List | Edit Form |
 | :---: | :---: | :---: |
-| ![Widok strony logowania](screenshots/todo_list1.png) | ![Widok listy zadań](screenshots/todo_list2.png) | ![Widok formularza edycji](screenshots/todo_list3.png) |
+| ![Login Page View](screenshots/todo_list1.png) | ![Task List View](screenshots/todo_list2.png) | ![Edit Form View](screenshots/todo_list3.png) |
 
-## Główne Funkcjonalności
+## Key Features
 
-*   **System Uwierzytelniania:** Rejestracja, logowanie i wylogowywanie użytkowników.
-*   **Prywatne Listy Zadań:** Każdy użytkownik ma dostęp tylko do swoich własnych zadań.
-*   **Operacje CRUD:** Pełna obsługa tworzenia, odczytu, aktualizacji i usuwania zadań.
-*   **Automatyczne Testy:** Kluczowe funkcjonalności są pokryte testami jednostkowymi.
-*   **Konteneryzacja:** Aplikacja jest gotowa do uruchomienia w środowisku Docker.
-*   **CI/CD Pipeline:** Automatyczny proces na GitHub Actions uruchamia testy po każdym commicie do gałęzi `main`.
-*   **Responsywny Design:** Interfejs użytkownika zbudowany z użyciem Bootstrapa.
+*   **User Authentication:** Full user registration, login, and logout system.
+*   **Private Task Lists:** Each user can only view and manage their own tasks.
+*   **CRUD Operations:** Full support for Creating, Reading, Updating, and Deleting tasks.
+*   **Automated Testing:** Core functionalities are covered by unit tests to ensure code quality.
+*   **Containerization:** The application is fully containerized using Docker and Docker Compose for portability and easy setup.
+*   **CI/CD Pipeline:** An automated GitHub Actions workflow runs all tests on every push to the `main` branch.
+*   **Responsive Design:** The user interface is built with Bootstrap and adapts to different screen sizes.
 
-## Użyte Technologie
+## Technologies Used
 
 *   **Backend:** Python, Django
 *   **Frontend:** HTML, CSS, Bootstrap 5
-*   **Baza Danych:** SQLite
-*   **Testowanie:** `unittest` (wbudowany w Django)
+*   **Database:** SQLite (for development)
+*   **Testing:** `unittest` (built-in Django module)
 *   **DevOps:** Docker, Docker Compose, Git, GitHub Actions (CI/CD)
 
-## Uruchomienie Projektu
+## How to Run
 
-### Sposób 1: Uruchomienie z Dockerem (Zalecane)
+### Option 1: Run with Docker (Recommended)
 
-1.  **Wymagania:** Upewnij się, że masz zainstalowany i uruchomiony **Docker Desktop**.
-2.  **Sklonuj repozytorium i przejdź do folderu projektu.**
-3.  **Zbuduj i uruchom kontenery:**
+1.  **Prerequisites:** Ensure you have **Docker Desktop** installed and running.
+2.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/Garseniuk/todo-project.git
+    cd todo-project
+    ```
+3.  **Build and run the containers:**
     ```bash
     docker compose up --build
     ```
-Aplikacja będzie dostępna w przeglądarce pod adresem `http://127.0.0.1:8000/`.
+The application will be available in your browser at `http://127.0.0.1:8000/`.
 
-### Sposób 2: Uruchomienie lokalne z Pythonem
+### Option 2: Run Locally with Python
 
-1.  **Sklonuj repozytorium i przejdź do folderu projektu.**
-2.  **Stwórz i aktywuj środowisko wirtualne.**
-3.  **Zainstaluj zależności (`pip install -r requirements.txt`).**
-4.  **Wykonaj migracje (`python manage.py migrate`).**
-5.  **Uruchom serwer (`python manage.py runserver`).**
+1.  **Clone the repository and navigate to the project folder.**
+2.  **Create and activate a virtual environment.**
+3.  **Install dependencies (`pip install -r requirements.txt`).**
+4.  **Run database migrations (`python manage.py migrate`).**
+5.  **Start the development server (`python manage.py runserver`).**
